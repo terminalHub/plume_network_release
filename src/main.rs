@@ -89,7 +89,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             discord_encrypted_id: None,
         };
         //暂定代理规则
-        let proxy_address = "http://liming1013:liming1108_country-hk,jp_streaming-1@geo.iproyal.com:12321";
+        let proxy_address = "";
         let proxy = Proxy::http(proxy_address)?;
         //推特认证
         let wallet_authorization_client = Rc::new(Client::builder()
