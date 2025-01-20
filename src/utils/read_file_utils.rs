@@ -6,19 +6,19 @@ use std::error::Error;
 use serde::de::DeserializeOwned;
 
 ///# feature
-///     根据传入文件路径按行读取信息 
+///- 根据传入文件路径按行读取信息 
 /// 
 ///# param
-///     文件路径
+/// - 文件路径
 /// 
 ///# return
-///     - 每行的信息封装成的Vec<String>
-///     - 路径文件不存在将会抛出异常
-pub async fn read_file_line_by_line(file_path : &str) -> Result<Vec<String>, Box<dyn std::error::Error>> {
+/// - 每行的信息封装成的Vec<String>
+/// - 路径文件不存在将会抛出异常
+pub async fn read_file_line_by_line(file_path:&str) -> Result<Vec<String>, Box<dyn Error>> {
     let path = Path::new(file_path);
     // 检查文件是否存在
     if !path.exists() {
-        return Err(Box::new(io::Error::new(io::ErrorKind::NotFound, format!("该{}路径下的文件不存在，请检查路径下所需文件的完整性！: ", file_path))));
+        return Err(Box::new(io::Error::new(io::ErrorKind::NotFound, format!("该{}路径下的文件不存在，请检查路径下所需文件的完整性！", file_path))));
     }
     //配置文件路径
     let path_buf = PathBuf::from_str(file_path)?;
@@ -45,8 +45,8 @@ where
 {
     // 检查文件是否存在
     if !Path::new(file_path).exists() {
-        return Err(Box::new(std::io::Error::new(
-            std::io::ErrorKind::NotFound,
+        return Err(Box::new(io::Error::new(
+            io::ErrorKind::NotFound,
             format!("配置文件不存在，请检查路径：{}", file_path),
         )));
     }

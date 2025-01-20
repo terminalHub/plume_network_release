@@ -59,7 +59,7 @@
 //         .init();
 //     let private_keys = self::read_private_keys().await?;
 //     // println!("Private keys: {:?}", private_keys);
-//     // let config = self::read_config().await?;
+//     // let config_file = self::read_config().await?;
 //     //从config/private_keys.txt下逐行读取字符串，使用vec存储
 //     for cur_private_key in &private_keys {
 //         // 初始化钱包
@@ -128,18 +128,18 @@
 //     let current_dir = env::current_dir()?;
 //     // println!("Current directory: {:?}", current_dir);
 //     // 配置文件路径
-//     let config_path = current_dir.join("config/config.toml");
+//     let config_path = current_dir.join("config_file/config_file.toml");
 //     // 读取配置文件内容
 //     let config_content = fs::read_to_string(config_path)?;
 //     // 解析 TOML 格式的配置文件
-//     let config: _Config = toml::de::from_str(&config_content)?;
-//     Ok(config)
+//     let config_file: _Config = toml::de::from_str(&config_content)?;
+//     Ok(config_file)
 // }
 // 
 // async fn read_private_keys() -> Result<Vec<String>, Box<dyn std::error::Error>> {
 //     let current_dir = env::current_dir()?;
 //     // 配置文件路径
-//     let config_path = current_dir.join("config/private_keys.txt");
+//     let config_path = current_dir.join("config_file/private_keys.txt");
 //     let private_keys_str = fs::read_to_string(config_path)?;
 //     let lines: Vec<String> = private_keys_str
 //         .lines()
